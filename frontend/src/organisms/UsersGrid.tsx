@@ -5,10 +5,11 @@ import { fetchGraphQLData } from '../api/graphql';
 import LoadingSpinner from '../atoms/LoadingSpinner';
 import { SortingOptions } from '../molecules/SortingOptions';
 import { Card } from '../molecules/Card';
+import { User } from '../types/dashboard';
 
 const UsersGrid = () => {
 
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [sortOptions, setSortOptions] = useState({
     field: 'name',

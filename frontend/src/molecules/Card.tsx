@@ -1,19 +1,20 @@
 import React from 'react'
 import { Avatar } from '../atoms/Avatar'
 import ConversionsChart from '../atoms/ConversionsChart'
+import { ConversionsPerDay, User } from '../types/dashboard';
 
 type Props = {
-  user: any;
+  user: User;
 }
 
 export function Card({ user }: Props) {
 
-  const getConversionsDate = (user: any) => {
+  const getConversionsDate = (user: User) => {
     // const { stats } = user;
     const { conversionsPerDay } = user;
-    let sortedConversions = conversionsPerDay.sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime());
+    let sortedConversions = conversionsPerDay.sort((a: ConversionsPerDay, b: ConversionsPerDay) => new Date(a.date).getTime() - new Date(b.date).getTime());
     let firstLast = sortedConversions.slice(0, 1).concat(sortedConversions.slice(-1));
-    const conversionsDates = firstLast.map((conversion: any) => {
+    const conversionsDates = firstLast.map((conversion: ConversionsPerDay) => {
       const date = new Date(conversion.date);
       const month = date.getMonth() + 1;
       const day = date.getDate();

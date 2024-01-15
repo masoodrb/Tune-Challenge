@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { ConversionsPerDay, User } from '../types/dashboard';
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +23,11 @@ ChartJS.register(
   Legend
 );
 
-function ConversionsChart({ data }: any) {
+type Props = {
+  data: ConversionsPerDay[];
+};
+
+function ConversionsChart({ data }: Props) {
 
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -47,14 +52,14 @@ function ConversionsChart({ data }: any) {
   }, []);
 
   const chartData = {
-    labels: data.map((item: any) => new Date(item.date).toLocaleDateString()),
+    labels: data.map((item: ConversionsPerDay) => new Date(item.date).toLocaleDateString()),
     datasets: [
       {
         steppedLine: false,
         backgroundColor: 'white',
         borderColor: '#6a5acd',
         label: 'Conversions per Day',
-        data: data.map((item: any) => item.conversions),
+        data: data.map((item: ConversionsPerDay) => item.conversions),
       },
     ],
   };

@@ -36,3 +36,8 @@ After setting up the backend, you can run the tests by following these steps:
 2. Run `php artisan test` to execute the tests.
 
 You should see the results of the tests in your terminal.
+
+## Challenge Task Points
+- Used Repository pattern to acheive persistence abstraction
+- Used Graphql for api design with sorting implemented
+
