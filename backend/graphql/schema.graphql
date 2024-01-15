@@ -1,0 +1,57 @@
+type User {
+  id: ID!
+  name: String!
+  avatar: String
+  occupation: String
+  stats: EventStats!
+  conversionsPerDay: [Conversion]!
+}
+
+type Conversion {
+  date: String!
+  conversions: Int!
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+input UserSort {
+  field: String!
+  direction: SortDirection!
+}
+
+input EventSort {
+  field: String!
+  direction: SortDirection!
+}
+
+type EventStats {
+  totalImpressions: Int!
+  totalConversions: Int!
+  totalRevenue: Float!
+}
+
+input DateRange {
+  start: String!
+  end: String!
+}
+
+input RevenueRange {
+  min: Float!
+  max: Float!
+}
+
+input EventStatsFilter {
+  dateRange: DateRange
+  userId: ID
+  type: String
+  revenueRange: RevenueRange
+}
+
+type Query {
+  users(sort: UserSort, filter: EventStatsFilter): [User] @field(resolver: "App\\Http\\Controllers\\UserController@getUsers")
+  user(id: ID!): User @field(resolver: "App\\Http\\Controllers\\UserController@getUser")
+  eventStats(filter: EventStatsFilter): EventStats @field(resolver: "App\\Http\\Controllers\\EventController@getEventStats")
+}

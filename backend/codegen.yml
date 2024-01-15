@@ -1,0 +1,6 @@
+overwrite: true
+schema: "graphql/schema.graphql"
+generates:
+  app/GraphQL/types.php:
+    plugins:
+      - "php"
