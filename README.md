@@ -18,7 +18,7 @@ The frontend of this project is built using the following technologies:
 
 The backend of this project is built using the following technologies:
 
-- PHP
+- PHP 8.3
 - Laravel
 - `nuwave/lighthouse` for GraphQL
 
